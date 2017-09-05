@@ -1,0 +1,6 @@
+* racket-sicp
+SICP exercises using Racket Programming Language
+
+
+Here I am trying to do SICP in Racket.  I am using Emacs to edit files
+and Geiser for the REPL and the environment.
