@@ -1,0 +1,60 @@
+#+TITLE: In how many ways can you change one dollar
+From Polya, G. “On Picture-Writing.” The American Mathematical
+Monthly, vol. 63, no. 10, 1956, pp. 689–697. JSTOR, JSTOR,
+www.jstor.org/stable/2309555.
+
+Let us generalize the proposed question.  Let $P_{n}$ denote the
+number of ways of paying the amount of $n$ cents with five kinds of
+coins: cents, nickels, dimes, quarters and half-dollars.  The "way of
+paying" is determined if, and only if, it is known how many coins of
+each kind are used.  Thus, $P_{4}=1, P_{5}=2, P_{10} = 4$.  It is
+appropriate to set $P_{0}=1$.  The problem stated at the outset
+requires us to compute $P_{100}$.  More generally, we wish to
+understand the nature of $P_{n}$ and eventually devise a procedure
+for computing $P_{n}$.
+
+It may help to visiualize the various possibilities.  We may use no
+cent, or just 1 cent, or 2 cents, or 3 cents, or ...  These
+alternatives are schematically pictured in the first line of Figure 1;
+[fn::A photo of actual coins would be more efffective here but too
+clumsy in the following figures.] "no cent" is represened by a square
+which may remind us of an empty desk.  The second line pictures the
+alternatives: using no nickel, 1 nickel, 2 nickels, ... The following
+three lines represent in the same way the possibilities regarding
+dimes, quarters and half-dollars.  We have to choose one picture from
+the first line, then one picture from the second line and so on,
+choosing just one picture from each line; combining (juxtaposing) the
+five pictures so selected, we obtain a manner of paying.  Thus, Figure
+1 exhibits directly the alternatives regarding each kind of coin and,
+indirectly, all manners of paying we are concerned with.
+
+#+CAPTION: A conmplete survey of alternatives.
+#+NAME:   fig1
+[[./fig1.png]]
+
+#+CAPTION: Genesis of the figurative series
+#+NAME: fig2
+[[./fig2.png]]
+
+The main discovery consists in observing that, in fact we combine the
+picutres in Figure 1 according to certain rules in algebra: if we
+conceive each line of Figure 1 as the /sum/ of pictures contained in
+it and we consider the /product/ of these five (infinite) sums, in
+short, if we pass from Figure 1 to Figure 2, and we develop the
+product, the terms of this development will represent the various
+manners of paying we are concerned with.  The one term of the product
+exhibited in the last line of Figure 2 as an example represents one
+manner of paying one dollar (putting down no cents, three nickels, one
+dime, one quarter and one half-dollar).  The sum of all such terms is
+an infinite series of pictures; each picture exhibits one manner of
+paying, different terms represent different manners of paying, and the
+whole series of pictures, appropriately called the /figurate series/,
+displays all manners of paying that we have have to consider when we
+wish to compute the numbers $P_{n}$.
+
+Yet this way of conceiving Figure 2 raises various difficulties.
+First, there is a theoretical difficulty: in which sense can we add
+and multiply pictures?  Then, there is a practical difficulty: how can
+we pick out conveniently from the whole figurate series the terms
+counted by $P_{n}$, that is, those cases in which the sum paid amounts
+to just $n$ cents?
