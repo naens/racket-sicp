@@ -1,7 +1,15 @@
-#+TITLE: In how many ways can you change one dollar
-From Polya, G. “On Picture-Writing.” The American Mathematical
-Monthly, vol. 63, no. 10, 1956, pp. 689–697. JSTOR, JSTOR,
-www.jstor.org/stable/2309555.
+#+OPTIONS: toc:nil
+#+LaTeX_CLASS_OPTIONS: [a4paper]
+#+LaTeX_CLASS_OPTIONS: [leqno]
+#+LaTeX_HEADER: \usepackage{biblatex}
+#+LaTeX_HEADER: \bibliography{change-one-dollar.bib}
+
+#+TITLE: In how many ways can you change one dollar\cite{10.2307/2309555}
+
+
+# From Polya, G. “On Picture-Writing.” The American Mathematical
+# Monthly, vol. 63, no. 10, 1956, pp. 689–697. JSTOR, JSTOR,
+# www.jstor.org/stable/2309555.
 
 Let us generalize the proposed question.  Let $P_{n}$ denote the
 number of ways of paying the amount of $n$ cents with five kinds of
@@ -14,7 +22,7 @@ understand the nature of $P_{n}$ and eventually devise a procedure
 for computing $P_{n}$.
 
 It may help to visiualize the various possibilities.  We may use no
-cent, or just 1 cent, or 2 cents, or 3 cents, or ...  These
+cent, or just 1 cent, or 2 cents, or 3 cents, or ... .  These
 alternatives are schematically pictured in the first line of Figure 1;
 [fn::A photo of actual coins would be more efffective here but too
 clumsy in the following figures.] "no cent" is represened by a square
@@ -32,7 +40,7 @@ indirectly, all manners of paying we are concerned with.
 #+NAME:   fig1
 [[./fig1.png]]
 
-#+CAPTION: Genesis of the figurative series
+#+CAPTION: Genesis of the figurate series
 #+NAME: fig2
 [[./fig2.png]]
 
@@ -58,3 +66,149 @@ and multiply pictures?  Then, there is a practical difficulty: how can
 we pick out conveniently from the whole figurate series the terms
 counted by $P_{n}$, that is, those cases in which the sum paid amounts
 to just $n$ cents?
+
+We avoid the theoretical difficulty if we employ the pictures, these
+symbols of a primitive writing, as we are used to employing the
+letters of more civilized alphabets: we regard each picture as the
+symbol for a variable or /indeterminate/.
+[fn::In a formal presentation it may be advisable to restrict
+the term "picture" to denote a (visible, written or printed) symbol
+that stands for an indeterminate; in the present introductory, rather
+informal, address the word is now and then loosely used.
+\par
+Let us pass over two somewhat touchy points: the infinity of variables
+and the convergence of the series in which they arise.  Both are
+considered in certain advanced theories and both are momentary.  They
+will be eliminated by the next step.]
+
+To master the other difficulty, we need one more essential idea: we
+substitute for each "pictoral" variable (that is, variable represented
+by a picture) a power of a new variable $x$, the /exponent/ of which
+is the /joint value of the coins/ represented by the picture, as it is
+shown in detail by Figure 3.  The third line of Figure 3 shows a lucky
+coincidence: we have conceived the three juxtaposed nickels as /one
+picture/, as the symbol of one variable (corresponding to the use of
+pecisely three nickels).  For this variable we have to substitute
+$x^{15}$ according to our general rule; yet even if we substitute for
+each of the juxtaposed coins the correct power of $x$ and consider the
+product of these juxtaposed powers. we arrive at the same final result
+$x^{15}$.
+
+#+CAPTION: Powers of one variable substitued for variables represented by pictures.
+#+NAME: fig3
+[[./fig3.png]]
+
+The last line of Figure 3 is very important.  It show by an example
+(see the last line of Fig. 2) how the described substitution affects
+the general term of the figurate series.  Such a term is the product
+of 5 pictures (pictoral variables).  For each factor a power of $x$ is
+substituted whose exponent is the value in cents of that factor; the
+exponent of the product obtained as a sum of 5 exponents, will be the
+joint value of the factor.  And so the substitution indicated by
+Figure 3 changes each term of the figurate series into a power
+$x^{n}$.  As the figurate series represents each manner of paying just
+once, the exponent $n$ arises precisely $P_{n}$ times so that (after
+suitable rearrangement of the terms) the whole figurate series goes
+into
+
+\begin{equation}
+P_{0} + P_{1}x + P_{2}x^{2} + ... + P_{n}x^{n} + ... .\tag{1}
+\end{equation}
+
+In this series the coefficient $x^{n}$ enumerates the different
+manners of paying the amount of $n$ cents, and so (1) is suitably
+called the /enumerating series/.
+
+The substitution indicated by Figure 3 changes the first line of
+Figure 2 into a geometric series:
+
+\begin{equation}
+1 + x + x^{2} + x^{3} + ... = (1 - x)^{-1}.\tag{2}
+\end{equation}
+
+In fact, this substitution changes each of the first five lines of
+Figure 2 into some geometric series and the equation indicated by
+Figure 2 goes over into
+
+\begin{equation}
+(1 - x)^{-1}(1 - x^{5})^{-1}(1 - x^{10})^{-1}(1 - x^{25})^{-1}(1 -
+x^{50})^{-1} = P_{0} + P_{1}x + P_{2}x^{2} + ... + P_{n}x^{n} +
+... .\tag{3}
+\end{equation}
+
+We have succeeded in expressiong the sum of the enumerating series.
+This sum is ususally termed the /generating function/; in fact, this
+function, expanded in powers of $x$, generates the numbers \(P_{0},
+P_{1}, ..., P_{n}, ...\) , the combinatorial meaning of which was our
+starting point.
+
+We have reduced a combinatorial problem to a problem of a different
+kind: expanding a given function of $x$ in powers of $x$.  In
+particular, we have reduced our initial problem about changing a
+dollar to the problem of computing the coefficient of $x^{100}$ in the
+expansion of the left hand side of (3).  Our main goal was to show how
+picture-writing can be used for this reduction.  Yet let us add a
+brief indication about the numerical computation.
+
+The left hand side of (3) is a product of five factors.  The well
+known expansion of the first factor is shown by (2).  We proceed by
+adjoining successive factors, one at a time.  Assume, for example,
+that we have already obtained the expansion of the product of the
+first two factors:
+
+\begin{equation*}
+(1 - x)^{-1}(1 - x^{5})^{-1} = a_{0} + a_{1}x + a_{2}x^{2} + ... ,
+\end{equation*}
+
+and we wish to go on hence to threee factors:
+
+\begin{equation*}
+(1 - x)^{-1}(1 - x^{5})^{-1}(1 - x^{10})^{-1} = b_{0} + b_{1}x +
+b_{2}x^{2} + ... .
+\end{equation*}
+
+It follows that
+
+\begin{equation*}
+(b_{0} + b_{1}x + b_{2}x^{2} + ...)(1 - x^{10}) = a_{0} + a_{1}x +
+a_{2}x^{2} + ... .
+\end{equation*}
+
+Comparing the coefficient of $x^{n}$ on both sides, we find that
+
+\begin{equation}
+b_{n} = b_{n - 10} + a_{n}\tag{4}
+\end{equation}
+
+(set $b_{m} = 0$ if $m < 0$). By (4), we can conveniently compute the
+coefficients $b_{n}$ by recursion if the $a_{n}$ are already known, and
+the series (3) can be obtained from (2) in four successive steps each
+of which is similar to the one we have just discussed.
+
+We add a table that shows the computation of $P_{50}$.  This table
+exhibits the coefficient of $x^n$ for some values of $n$ in five
+different expansions.  The head of each column shows the value of $n$,
+the beginning of each row the last factor taken into account; the
+bottom row would show $P_{n}$ for $n = 0, 5, 10, ..., 50$ /if/ we had
+computed it.  Yet the table registers only the steps needed for
+computing the answer to our initial question and yields $P_{50} = 50$;
+that is, one can pay 50 cents in exactly 50 different ways.  We leave
+it to the reader to continue the computation and verify that $P_{100}
+= 292$; he can also try to justify the procedure of computation
+directly without resorting to the enumerating series.[fn::For the
+usual method of deriving the generating function, /cf/. 1.Vol. 1, p.1,
+Problem 1.]
+
+
+#+CAPTION: Table to compute $P_{50}$
+#+NAME: tab:basic-data
+|                   | $n=0$ | 5 | 10 | 15 | 20 | 25 | 30 | 35 | 40 | 45 | 50 |
+|-------------------+-------+---+----+----+----+----+----+----+----+----+----|
+| /                 |     < |   |    |    |    |    |    |    |    |    |    |
+| $(1-x)^{-1}$      |     1 | 1 |  1 |  1 |  1 |  1 |  1 |  1 |  1 |  1 |  1 |
+| $(1-x^{5})^{-1}$  |     1 | 2 |  3 |  4 |  5 |  6 |  7 |  8 |  9 | 10 | 11 |
+| $(1-x^{10})^{-1}$ |     1 | 2 |  4 |  6 |  9 | 12 | 16 |    | 25 |    | 36 |
+| $(1-x^{25})^{-1}$ |     1 |   |    |    |    | 13 |    |    |    |    | 49 |
+| $(1-x^{50})^{-1}$ |     1 |   |    |    |    |    |    |    |    |    | 50 |
+
+\printbibliography
