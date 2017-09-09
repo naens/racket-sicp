@@ -1,0 +1,165 @@
+#+OPTIONS: toc:nil
+#+OPTIONS: num:nil
+
+#+LaTeX_CLASS_OPTIONS: [a4paper]
+#+LaTeX_CLASS_OPTIONS: [leqno]
+
+#+LaTeX_HEADER: \usepackage{tikz}
+#+LaTeX_HEADER: \usetikzlibrary{fit,calc,positioning,decorations.pathreplacing,matrix}
+
+#+TITLE: Racket SICP: Exercise 1.13
+
+* Problem statement
+Prove that $Fib(n)$ is the closest integer to $\phi^{n}/\sqrt{5}$, where
+$\phi = (1 + \sqrt{5})/2$.  Hint: Let $\psi = (1 - \sqrt{5})/2$.  Use
+induction and this definition of the Fibonacci numbers to prove that
+$Fib(n) = (\phi^{n} - \psi^{n}) / \sqrt{5}$.
+
+** The definition of the Fibonacci numbers
+
+\begin{equation*}
+Fib(n)=
+\left\{
+\begin{array}{r c l}
+0 & \text{if}\ n = 0\\
+1 & \text{if}\ n = 1\\
+Fib(n - 1) + Fib(n - 2) & \text{otherwise}
+\end{array}
+\right.
+\end{equation*}
+
+* Proof
+** Proof using the hint
+
+To prove that $Fib(n)$ is the closest integer to $\phi^{n}$ is to
+prove that
+\begin{equation*}
+\left\lvert Fib(n) - \frac{\phi^{n}}{\sqrt{5}}\right\rvert < \frac{1}{2}
+\end{equation*}
+
+Using the definition of $Fib(n)$ from th hint we have
+\begin{equation*}
+\left\rvert\frac{\phi^{n} - \psi^{n} - \phi^{n}}{\sqrt{5}}\right\rvert < \frac{1}{2}
+\end{equation*}
+
+Further transformations:
+\begin{equation*}
+\lvert\phi^{n}\rvert < \frac{\sqrt{5}}{2}
+\end{equation*}
+
+\begin{equation*}
+\left\rvert\left(\frac{1 - \sqrt{5}}{2}\right)^{n}\right\rvert <
+\frac{\sqrt{5}}{2}
+\end{equation*}
+
+\begin{equation*}
+\left(\frac{\sqrt{5} - 1}{2}\right)^{n} < \frac{\sqrt{5}}{2}
+\end{equation*}
+
+We can see that the left part is less than 1:
+\begin{equation*}
+\frac{\sqrt{5} - 1}{2} < 1
+\end{equation*}
+
+\begin{equation*}
+\left(\frac{\sqrt{5} - 1}{2}\right)^{2} < 1^{2}
+\end{equation*}
+
+\begin{equation*}
+\frac{5 + 1 -2\sqrt{5}}{2} < 1
+\end{equation*}
+
+\begin{equation*}
+3 - \sqrt{5} < 1
+\end{equation*}
+
+\begin{equation*}
+2 < \sqrt{5}
+\end{equation*}
+
+Which is ~true~.
+
+** Proof of the hint
+
+Now it has to be proven that
+
+\begin{equation*}
+Fib(n) = \frac{\phi^{n} - \psi^{n}}{\sqrt{5}}
+\end{equation*}
+
+First, for special cases:
+
+\begin{equation*}
+Fib(0) = 0
+\end{equation*}
+
+\begin{equation*}
+\frac{\phi^{0} - \psi^{0}}{\sqrt{5}} = \frac{1 - 1}{\sqrt{5}} = 0
+\end{equation*}
+
+\begin{equation*}
+Fib(1) = 1
+\end{equation*}
+
+\begin{equation*}
+\frac{\phi^{1} - \psi^{1}}{\sqrt{5}} =
+\frac{\frac{1 + \sqrt{5}}{2} - \frac{1 - \sqrt{5}}{2}}{\sqrt{5}} =
+\frac{\frac{1}{2} + \frac{\sqrt{5}}{2} - \frac{1}{2} + 
+\frac{\sqrt{5}}{2}}{\sqrt{5}} =
+\frac{\sqrt{5} + \sqrt{5}}{2\sqrt{5}} = 1
+\end{equation*}
+
+Now the general case:
+
+\begin{equation*}
+Fib(n) = Fib(n - 1) + Fib(n - 2)
+\end{equation*}
+
+\begin{equation*}
+{\phi^{n} - \psi^{n}}{\sqrt{5}} =
+\frac{\phi^{n - 1} - \psi^{n - 1}}{\sqrt{5}} +
+\frac{\phi^{n - 2} - \psi^{n - 2}}{\sqrt{5}}
+\end{equation*}
+
+\begin{equation*}
+\phi^{n} - \psi^{n} = \phi^{n - 1} - \psi^{n - 1} + \phi^{n - 2} -
+\psi^{n - 2}
+\end{equation*}
+
+\begin{equation*}
+\phi^{n} - \phi^{n - 1} - \phi^{n - 2} = \psi^{n} - \psi^{n - 1} -
+\psi^{n - 2}
+\end{equation*}
+
+\begin{equation*}
+\phi^{n - 2}(\phi^{2} - \phi - 1) = \psi^{n - 2}(\psi^{2} - \psi - 1)
+\end{equation*}
+
+\begin{equation*}
+\phi^{n - 2}\left(\left(\frac{1 + \sqrt{5}}{2}\right)^{2} -
+\frac{1 + \sqrt{5}}{2} - 1\right) = 
+\psi^{n - 2}\left(\left(\frac{1 - \sqrt{5}}{2}\right)^{2} -
+\frac{1 - \sqrt{5}}{2} - 1\right)
+\end{equation*}
+
+\begin{equation*}
+\phi^{n - 2}\left(\frac{(1 + \sqrt{5})^{2}}{4} -
+\frac{2 + 2\sqrt{5}}{4} - \frac{4}{4}\right) =
+\psi^{n - 2}\left(\frac{(1 - \sqrt{5})^{2}}{4} -
+\frac{2 - 2\sqrt{5}}{4} - \frac{4}{4}\right)
+\end{equation*}
+
+\begin{equation*}
+\phi^{n - 2}\left(\frac{1 + 2\sqrt{5} + 5 - 2 - 2\sqrt{5} - 4}{4}\right) =
+\psi^{n - 2}\left(\frac{1 - 2\sqrt{5} + 5 - 2 + 2\sqrt{5} - 4}{4}\right)
+\end{equation*}
+
+\begin{equation*}
+\phi^{n - 2}(6 - 2 - 4) = psi^{n - 2}(6 - 2 - 4)
+\end{equation*}
+
+\begin{equation*}
+\phi^{n - 2} * 0 = psi^{n - 1} * 0
+\end{equation*}
+
+\hfill $\square$
