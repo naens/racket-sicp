@@ -6,3 +6,8 @@
 *.bcf
 *.blg
 *.run.xml
+ltxpng
+*.aux
+*.log
+*.out
+.fuse_*
