@@ -11,3 +11,4 @@ ltxpng
 *.log
 *.out
 .fuse_*
+book_*.rkt
