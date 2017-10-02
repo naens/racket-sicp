@@ -12,4 +12,4 @@
                     m))
         (#t (remainder (* base (expmod base (- exp 1) m))
                        m))))
-(fast-prime? 137 3)
+(fast-prime? 137 5)
