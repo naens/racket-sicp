@@ -13,4 +13,4 @@
 (define (% a b)
   (remainder a b))
 
-(proc 1105m)
+(proc 1105)
