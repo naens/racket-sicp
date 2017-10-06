@@ -1,0 +1,18 @@
+(define (cont-frac n d k)
+  (define (rec i acc)
+    (cond ((<= i 0) acc)
+          (#t (rec (- i 1)
+                   (/ (n i)
+                      (+ (d i)
+                         acc))))))
+  (rec k 0))
+
+(define (approx-e k)
+  (define n (lambda (i) 1.0))
+  (define d (lambda (i)
+              (if (= (modulo (+ i 1) 3) 0)
+                  (* 2 (/ (+ i 1) 3))
+                  1)))
+  (+ (cont-frac n d k) 2))
+
+(approx-e 100)
