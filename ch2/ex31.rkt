@@ -1,0 +1,5 @@
+(define (tree-map f tree)
+  (cond ((null? tree) '())
+        ((pair? tree) (cons (tree-map (car tree))
+                            (tree-map (cdr tree))))
+        (#t (f tree))))
